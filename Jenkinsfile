@@ -2,10 +2,10 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'your-dockerhub-username/todo-app'
+        DOCKER_IMAGE = 'shivaminc/todo-app'
         DOCKER_TAG = "${env.BUILD_NUMBER}"
         // DEPLOY_DIR = '/var/www/html/todo-app'
-        REPO_URL = 'https://your-repository-url.git'
+        REPO_URL = 'https://github.com/Shivaminc/Jenkins_Test'
     }
 
     stages {
