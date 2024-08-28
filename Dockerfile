@@ -7,9 +7,9 @@ WORKDIR /var/www/html
 # Copy the current directory contents into the container at /var/www/html
 COPY . /var/www/html
 
-# Install any needed packages (e.g., Composer)
-# RUN apt-get update && apt-get install -y libpng-dev
-# RUN docker-php-ext-install pdo pdo_mysql
+# Install MySQL extensions and other needed packages
+RUN apt-get update && apt-get install -y libpng-dev libonig-dev libxml2-dev \
+    && docker-php-ext-install pdo pdo_mysql mysqli
 
 # Set file permissions
 RUN chown -R www-data:www-data /var/www/html
