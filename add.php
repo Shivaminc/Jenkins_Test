@@ -1,15 +1,19 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $task = trim($_POST['task']);
+// add.php
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $task = $_POST['task'];
+    
     if (!empty($task)) {
-        $tasks = file_get_contents('tasks.json');
-        $tasksArray = json_decode($tasks, true);
-
-        $tasksArray[] = $task;
-
-        file_put_contents('tasks.json', json_encode($tasksArray));
+        $tasks = json_decode(file_get_contents('tasks.json'), true);
+        $tasks[] = ['task' => $task];
+        file_put_contents('tasks.json', json_encode($tasks, JSON_PRETTY_PRINT));
+        header('Location: index.php'); // Redirect to list of tasks
+        exit();
     }
 }
-
-header('Location: index.php');
+?>
+<form method="POST">
+    <input type="text" name="task" placeholder="Enter task">
+    <button type="submit">Add Task</button>
+</form>
