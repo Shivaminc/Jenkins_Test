@@ -50,4 +50,11 @@ pipeline {
 
     post {
         success {
-            echo '
+            echo 'Deployment completed successfully!'
+        }
+        failure {
+            echo 'Deployment failed!'
+            sh 'docker logs todo-app'
+        }
+    }
+}
