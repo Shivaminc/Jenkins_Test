@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'your-dockerhub-username/todo-app'
         DOCKER_TAG = "${env.BUILD_NUMBER}"
-        DEPLOY_DIR = '/var/www/html/todo-app'
+        // DEPLOY_DIR = '/var/www/html/todo-app'
         REPO_URL = 'https://your-repository-url.git'
     }
 
